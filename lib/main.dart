@@ -1,11 +1,9 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:productivity/screens/productivity_screens.dart';
 
 void main() async {
-
   runApp(
     const MyApp(),
   );
@@ -24,19 +22,18 @@ class _MyAppState extends State<MyApp> {
     return CupertinoApp(
       debugShowCheckedModeBanner: false,
       theme: CupertinoThemeData(
-        brightness: Brightness.dark,scaffoldBackgroundColor: Colors.black87,
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black87,
         textTheme: CupertinoTextThemeData(
-          textStyle: GoogleFonts.dongle(
-            color: Colors.white,
-            fontSize: 35,
-            shadows: [
-              const Shadow(color: Colors.white,offset: Offset(0, 0),blurRadius: 15),
-            ]
-          ),
+          textStyle:
+              GoogleFonts.dongle(color: Colors.white, fontSize: 35, shadows: [
+            const Shadow(
+                color: Colors.white, offset: Offset(0, 0), blurRadius: 15),
+          ]),
         ),
       ),
       title: 'Productivity',
-      home:  const ProductivityScreens(),
+      home: const ProductivityScreens(),
     );
   }
-}
+} /// I'm SemihYlmzz and we're on GitHub anymore. :)
