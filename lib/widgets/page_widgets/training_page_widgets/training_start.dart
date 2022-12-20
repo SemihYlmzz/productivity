@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter/cupertino.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 typedef IntCallback = void Function(int val);
 typedef StringCallback = void Function(String val);
@@ -16,16 +16,17 @@ class TrainingStart extends StatefulWidget {
   final int repGoal;
   final String movement;
 
-  const TrainingStart(
-      {Key? key,
-      required this.stageIndexBack,
-      required this.visibleIndex,
-      required this.setDif,
-      required this.setRep,
-      required this.stageIndexNext,
-      required this.setIndex, required this.repGoal, required this.movement,
-      })
-      : super(key: key);
+  const TrainingStart({
+    Key? key,
+    required this.stageIndexBack,
+    required this.visibleIndex,
+    required this.setDif,
+    required this.setRep,
+    required this.stageIndexNext,
+    required this.setIndex,
+    required this.repGoal,
+    required this.movement,
+  }) : super(key: key);
 
   @override
   State<TrainingStart> createState() => _TrainingStartState();
@@ -47,7 +48,7 @@ class _TrainingStartState extends State<TrainingStart> {
           const SizedBox(),
           FadeIn(
               delay: const Duration(milliseconds: 400),
-              child:  Text(
+              child: Text(
                 'Set - ${widget.setIndex}',
                 style: const TextStyle(fontSize: 70),
               )),
@@ -59,9 +60,11 @@ class _TrainingStartState extends State<TrainingStart> {
                   Expanded(
                     child: FadeInLeft(
                         delay: const Duration(milliseconds: 700),
-                        child:  Center(
+                        child: Center(
                           child: Text(
-                            widget.movement != '  Plank' ? 'REP GOAL :' : 'SEC GOAL :',
+                            widget.movement != '  Plank'
+                                ? 'REP GOAL :'
+                                : 'SEC GOAL :',
                             textAlign: TextAlign.start,
                           ),
                         )),
@@ -69,7 +72,7 @@ class _TrainingStartState extends State<TrainingStart> {
                   Expanded(
                     child: FadeInRight(
                         delay: const Duration(milliseconds: 900),
-                        child:  Center(
+                        child: Center(
                           child: Text(
                             widget.repGoal.toString(),
                             textAlign: TextAlign.start,
@@ -109,11 +112,17 @@ class _TrainingStartState extends State<TrainingStart> {
                               setState(() {});
                             },
                             scrollController: FixedExtentScrollController(
-                                initialItem: set1Rep != null ? (set1Rep! + 1) : 0),
-                            children:   List<Widget>.generate(
-                              widget.repGoal+2,
-                                  (int index) {
-                                return Text(index == 0 ? '-' :'${index-1}',style: const TextStyle(color: Colors.white,),);
+                                initialItem:
+                                    set1Rep != null ? (set1Rep! + 1) : 0),
+                            children: List<Widget>.generate(
+                              widget.repGoal + 2,
+                              (int index) {
+                                return Text(
+                                  index == 0 ? '-' : '${index - 1}',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                );
                               },
                             ),
                           ),
@@ -191,12 +200,14 @@ class _TrainingStartState extends State<TrainingStart> {
                       : () {
                           widget.setRep(set1Rep!);
                           widget.setDif(set1Dif!);
-                          (widget.movement == '  Plank' && widget.visibleIndex == 5) ? widget.stageIndexNext(5):widget.stageIndexNext(1);
+                          (widget.movement == '  Plank' &&
+                                  widget.visibleIndex == 5)
+                              ? widget.stageIndexNext(5)
+                              : widget.stageIndexNext(1);
                           difficultyLevel = '';
                           set1Rep = null;
                           set1Rep = null;
-
-                  },
+                        },
                   child: const Text(
                     'Next',
                     style: TextStyle(shadows: []),

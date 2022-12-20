@@ -1,26 +1,25 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:lottie/lottie.dart';
 
-typedef IntCallback = void Function(int val);
+import '../../screen_widgets/today_widgets/inboxes/todo_inbox.dart';
 
 class TrainingRest extends StatefulWidget {
   final int visibleIndex;
   final int restIndex;
   final IntCallback stageIndexBack;
   final IntCallback stageIndexNext;
-
-  const TrainingRest(
-      {Key? key,
-      required this.visibleIndex,
-      required this.restIndex,
-      required this.stageIndexNext,
-      required this.stageIndexBack,
-      })
-      : super(key: key);
+  const TrainingRest({
+    Key? key,
+    required this.visibleIndex,
+    required this.restIndex,
+    required this.stageIndexNext,
+    required this.stageIndexBack,
+  }) : super(key: key);
 
   @override
   State<TrainingRest> createState() => _TrainingRestState();
@@ -38,7 +37,7 @@ class _TrainingRestState extends State<TrainingRest> {
           const SizedBox(),
           FadeIn(
               delay: const Duration(milliseconds: 400),
-              child:  Text(
+              child: Text(
                 'Rest - ${widget.restIndex}',
                 style: const TextStyle(fontSize: 70),
               )),
@@ -59,9 +58,11 @@ class _TrainingRestState extends State<TrainingRest> {
                       onEnd: () {
                         if (widget.visibleIndex == 2) {
                           HapticFeedback.vibrate();
-                          Future.delayed(const Duration(seconds: 1), () {
-                            HapticFeedback.vibrate();
-                          },
+                          Future.delayed(
+                            const Duration(seconds: 1),
+                            () {
+                              HapticFeedback.vibrate();
+                            },
                           );
                         }
                       },
@@ -109,6 +110,7 @@ class _TrainingRestState extends State<TrainingRest> {
                 CupertinoButton(
                   onPressed: () {
                     widget.stageIndexNext(1);
+
                     /// set1Rep
                   },
                   child: const Text(

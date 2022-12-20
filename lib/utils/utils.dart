@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:productivity/screens/all_pages/today_training_page.dart';
-
 
 class HeroDialogRoute extends PageRoute {
   HeroDialogRoute({required this.builder}) : super();
@@ -39,13 +37,14 @@ class HeroDialogRoute extends PageRoute {
     return builder(context);
   }
 }
+
 class GradientText extends StatelessWidget {
   const GradientText(this.text,
       {Key? key,
-        required this.gradient,
-        this.style,
-        this.align,
-        this.maxLines = 1})
+      required this.gradient,
+      this.style,
+      this.align,
+      this.maxLines = 1})
       : super(key: key);
 
   final int maxLines;

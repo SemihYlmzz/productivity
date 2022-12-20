@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-typedef StringCallback = void Function(int val);
+import '../../../screens/day_screens.dart';
 
 class TrainingGetReady extends StatefulWidget {
   final StringCallback stageIndex;
@@ -98,7 +98,9 @@ class _TrainingGetReadyState extends State<TrainingGetReady> {
           FadeIn(
               delay: const Duration(milliseconds: 2200),
               child: Text(
-                widget.movement != '  Plank' ?'You will go for ${widget.repGoal} Reps. ${widget.setGoal} Sets.' :'You will go for ${widget.repGoal} seconds. 3 Sets.',
+                widget.movement != '  Plank'
+                    ? 'You will go for ${widget.repGoal} Reps. ${widget.setGoal} Sets.'
+                    : 'You will go for ${widget.repGoal} seconds. 3 Sets.',
                 textAlign: TextAlign.start,
               )),
           FadeIn(

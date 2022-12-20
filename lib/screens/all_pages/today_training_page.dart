@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/page_widgets/training_page_widgets/training_get_ready.dart';
-import '../../widgets/page_widgets/training_page_widgets/training_rest.dart';
-import '../../widgets/page_widgets/training_page_widgets/training_end.dart';
-import '../../widgets/page_widgets/training_page_widgets/training_start.dart';
+import '../../widgets/page_widgets/training_page_widgets/training_exports.dart';
 
-typedef ListCallback = void Function(Map<String,dynamic>);
+typedef ListCallback = void Function(Map<String, dynamic>);
 typedef BoolCallback = void Function(bool);
 
 class TodayTrainingPage extends StatefulWidget {
@@ -14,16 +11,15 @@ class TodayTrainingPage extends StatefulWidget {
 
   final ListCallback? finishedExerciseTTP;
   final String dayOfTheWeek;
-  final Map<String,dynamic> exercise;
+  final Map<String, dynamic> exercise;
 
-  const TodayTrainingPage(
-      {Key? key,
-      required this.exercise,
-      required this.dayOfTheWeek,
-      required this.finishedExerciseTTP,
-      required this.isDoneInfo,
-      })
-      : super(key: key);
+  const TodayTrainingPage({
+    Key? key,
+    required this.exercise,
+    required this.dayOfTheWeek,
+    required this.finishedExerciseTTP,
+    required this.isDoneInfo,
+  }) : super(key: key);
 
   @override
   State<TodayTrainingPage> createState() => _TodayTrainingPageState();
@@ -33,14 +29,14 @@ class _TodayTrainingPageState extends State<TodayTrainingPage> {
   int stageIndex = 0;
   List<int> reps = [];
   List<String> diffs = [];
-  Map<String,dynamic> finishedExercise = {};
+  Map<String, dynamic> finishedExercise = {};
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       backgroundColor: Colors.white.withOpacity(0.035),
       navigationBar: CupertinoNavigationBar(
-        middle:  Text(
+        middle: Text(
           '${widget.dayOfTheWeek} Exercise ',
           style: const TextStyle(color: Colors.white),
         ),
@@ -107,10 +103,10 @@ class _TodayTrainingPageState extends State<TodayTrainingPage> {
             movement: widget.exercise['exercise'],
             repsList: reps,
             repGoal: widget.exercise['rep'],
-            finishedExercise: (v){
+            finishedExercise: (v) {
               widget.finishedExerciseTTP!(v);
             },
-            isDoneInfo: (v){
+            isDoneInfo: (v) {
               widget.isDoneInfo(v);
             },
           ),

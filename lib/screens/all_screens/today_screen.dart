@@ -1,12 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/screen_widgets/today_widgets/inboxes/diet_inbox.dart';
-import '../../widgets/screen_widgets/today_widgets/inboxes/language_inbox.dart';
-import '../../widgets/screen_widgets/today_widgets/inboxes/sleep_inbox.dart';
-import '../../widgets/screen_widgets/today_widgets/inboxes/sport_inbox.dart';
-import '../../widgets/screen_widgets/today_widgets/inboxes/todo_inbox.dart';
-import '../../widgets/screen_widgets/today_widgets/inboxes/water_inbox.dart';
+import '../../widgets/screen_widgets/today_widgets/inboxes/inboxes_exports.dart';
 import '../../widgets/screen_widgets/today_widgets/jobs_box_widget.dart';
 
 class TodayScreen extends StatefulWidget {
@@ -41,10 +36,15 @@ class _TodayScreenState extends State<TodayScreen>
     {'exercise': '  Curl', 'rep': 7, 'dif': '+12','isDone':false,'needs' :'- 12Kg Dumbbell'},*/
     /*{'exercise': 'Push-Up', 'rep': 11, 'dif': '-40','isDone':false,'needs':'- Push-Up Bar'},
     {'exercise': '  Press', 'rep': 7, 'dif': '+12','isDone':false,'needs' :'- 12Kg Dumbbell'},*/
-    {'exercise': '  Plank', 'rep': 121, 'dif': '10','isDone':false,'needs' :'- None'},
+    {
+      'exercise': '  Plank',
+      'rep': 121,
+      'dif': '10',
+      'isDone': false,
+      'needs': '- None'
+    },
   ];
-  List<Map<String, dynamic>> finishedExercises = [
-  ];
+  List<Map<String, dynamic>> finishedExercises = [];
 
   int currentToDoIndex = 0;
   int segmentedIndex = 0;
@@ -68,7 +68,8 @@ class _TodayScreenState extends State<TodayScreen>
 
   @override
   void initState() {
-    date = '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}';
+    date =
+        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}';
     super.initState();
   }
 
@@ -76,9 +77,11 @@ class _TodayScreenState extends State<TodayScreen>
   Widget build(BuildContext context) {
     super.build(context);
     return CupertinoPageScaffold(
-
       navigationBar: CupertinoNavigationBar(
-        middle: Text(date,style: const TextStyle(color: Colors.white),),
+        middle: Text(
+          date,
+          style: const TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.white.withOpacity(0.035),
         brightness: Brightness.dark,
       ),
@@ -129,7 +132,10 @@ class _TodayScreenState extends State<TodayScreen>
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    SleepInbox(currentToDoIndex: currentToDoIndex,sleptAt: sleptAt,wakeUpAt: wakeUpAt),
+                    SleepInbox(
+                        currentToDoIndex: currentToDoIndex,
+                        sleptAt: sleptAt,
+                        wakeUpAt: wakeUpAt),
                     ToDoInbox(
                       currentToDoIndex: currentToDoIndex,
                       houseMap: houseMap,
@@ -146,18 +152,19 @@ class _TodayScreenState extends State<TodayScreen>
                       currentToDoIndex: currentToDoIndex,
                       dayOfTheWeek: dayOfTheWeek,
                       todaysExercises: unfinishedExercises,
-                      isAllExercisesEnd: finishedExercises.length == unfinishedExercises.length,
-                      finishedExercise: (v){
+                      isAllExercisesEnd: finishedExercises.length ==
+                          unfinishedExercises.length,
+                      finishedExercise: (v) {
                         finishedExercises.add(v);
                         setState(() {});
                       },
-                      isDoneInfo: (v){
-                        if(unfinishedExercises[0]['isDone'] != true){
+                      isDoneInfo: (v) {
+                        if (unfinishedExercises[0]['isDone'] != true) {
                           unfinishedExercises[0]['isDone'] = v;
-                        }else{ unfinishedExercises[1]['isDone'] = v;}
-                        setState(() {
-
-                        });
+                        } else {
+                          unfinishedExercises[1]['isDone'] = v;
+                        }
+                        setState(() {});
                       },
                     ),
                     LanguageInbox(currentToDoIndex: currentToDoIndex),
@@ -172,6 +179,7 @@ class _TodayScreenState extends State<TodayScreen>
       ),
     );
   }
+
   @override
   bool get wantKeepAlive => true;
 }

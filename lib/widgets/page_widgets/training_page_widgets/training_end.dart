@@ -13,7 +13,7 @@ class TrainingEnd extends StatefulWidget {
   final List<int> repsList;
   final int repGoal;
 
-  TrainingEnd(
+  const TrainingEnd(
       {Key? key,
       required this.visibleIndex,
       required this.movement,
@@ -36,7 +36,9 @@ class _TrainingEndState extends State<TrainingEnd> {
   Widget build(BuildContext context) {
     if (abc == null) {
       for (int i = 0; i < widget.repsList.length; i++) {
-        abc != null ?abc = abc! + widget.repsList[i] : abc = widget.repsList[i];
+        abc != null
+            ? abc = abc! + widget.repsList[i]
+            : abc = widget.repsList[i];
       }
     }
     return Visibility(
@@ -130,7 +132,9 @@ class _TrainingEndState extends State<TrainingEnd> {
           ),
           if (widget.repsList.length > 4 ||
               (widget.movement == '  Plank' && widget.repsList.length == 3))
-            showDetails ?const Text('Tap Box to Close Details.'): const Text('Tap Box to See Details.'),
+            showDetails
+                ? const Text('Tap Box to Close Details.')
+                : const Text('Tap Box to See Details.'),
           FadeIn(
             delay: const Duration(milliseconds: 2500),
             child: CupertinoButton(
@@ -157,7 +161,8 @@ class _TrainingEndState extends State<TrainingEnd> {
     );
   }
 
-  Flexible tableLine(String column1, String column2, String column3,String column4) {
+  Flexible tableLine(
+      String column1, String column2, String column3, String column4) {
     return Flexible(
       child: Row(
         children: [

@@ -11,9 +11,9 @@ class ResultsScreen extends StatefulWidget {
 class _ResultsScreenState extends State<ResultsScreen> {
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
+    return const CupertinoPageScaffold(
       backgroundColor: Colors.black87,
-      child: const Center(
+      child: Center(
         child: Text(
           'Before/After\'lar\nYağ Oranı Grafikleri\nSu içme Grafikleri\nUyku Grafikleri',
         ),
