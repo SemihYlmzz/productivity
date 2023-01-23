@@ -2,7 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../providers/today_provider.dart';
 import '../todo_widgets/check_box_widget.dart';
 
 typedef IntCallback = void Function(int val);
@@ -32,6 +34,8 @@ class _ToDoInboxState extends State<ToDoInbox> {
 
   @override
   Widget build(BuildContext context) {
+    final todayProvider = Provider.of<TodayProvider>(context);
+
     return Visibility(
       visible: widget.currentToDoIndex == 1,
       child: FadeInUp(
@@ -54,8 +58,17 @@ class _ToDoInboxState extends State<ToDoInbox> {
                             onTap: () {
                               element['isDone'] = !element['isDone'];
                               element['isDone'] == true
-                                  ? HapticFeedback.heavyImpact()
-                                  : HapticFeedback.lightImpact();
+                                  ? {
+                           Provider.of<TodayProvider>(context,listen:false).changeTodayPoint(todayProvider.todayPoint+10),
+
+                              HapticFeedback.heavyImpact()
+
+                              }
+                                  : {
+                                Provider.of<TodayProvider>(context,listen:false).changeTodayPoint(todayProvider.todayPoint-10),
+
+                                HapticFeedback.lightImpact()
+                              };
                               setState(() {});
                             },
                             child: CheckBoxWidget(
@@ -73,8 +86,14 @@ class _ToDoInboxState extends State<ToDoInbox> {
                             onTap: () {
                               element['isDone'] = !element['isDone'];
                               element['isDone'] == true
-                                  ? HapticFeedback.heavyImpact()
-                                  : HapticFeedback.lightImpact();
+                                  ? {
+                                                           Provider.of<TodayProvider>(context,listen:false).changeTodayPoint(todayProvider.todayPoint+10),
+
+                                HapticFeedback.heavyImpact()}
+                                  : {
+                                                           Provider.of<TodayProvider>(context,listen:false).changeTodayPoint(todayProvider.todayPoint-10),
+
+                                HapticFeedback.lightImpact()};
                               setState(() {});
                             },
                             child: CheckBoxWidget(

@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:productivity/providers/today_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/screen_widgets/today_widgets/inboxes/inboxes_exports.dart';
 import '../../widgets/screen_widgets/today_widgets/jobs_box_widget.dart';
+import 'package:animated_flip_counter/animated_flip_counter.dart';
 
 class TodayScreen extends StatefulWidget {
   const TodayScreen({Key? key}) : super(key: key);
@@ -13,6 +16,7 @@ class TodayScreen extends StatefulWidget {
 
 class _TodayScreenState extends State<TodayScreen>
     with AutomaticKeepAliveClientMixin<TodayScreen> {
+  int todayPoint = 0;
   String date = '';
   String sleptAt = '20:42';
   String wakeUpAt = '04:42';
@@ -75,6 +79,8 @@ class _TodayScreenState extends State<TodayScreen>
 
   @override
   Widget build(BuildContext context) {
+    final todayProvider = Provider.of<TodayProvider>(context);
+
     super.build(context);
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
@@ -82,46 +88,24 @@ class _TodayScreenState extends State<TodayScreen>
           date,
           style: const TextStyle(color: Colors.white),
         ),
+        trailing: AnimatedFlipCounter(
+          value: todayProvider.todayPoint,
+          textStyle:  const TextStyle(fontSize: 41),
+          curve: Curves.decelerate,
+          duration: const Duration(milliseconds: 500),
+          wholeDigits: 3,
+
+        ),
         backgroundColor: Colors.white.withOpacity(0.035),
         brightness: Brightness.dark,
       ),
       child: Column(
         children: [
           Expanded(
-            child: GridView.builder(
+
+            child: Padding(
               padding:
-                  EdgeInsets.only(top: 70 + MediaQuery.of(context).padding.top),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-              ),
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 6,
-              itemBuilder: (context, index) => Center(
-                child: GestureDetector(
-                  onTap: () {
-                    if (currentToDoIndex != 1 && index == 1) {
-                      segmentedIndex = 0;
-                    }
-                    currentToDoIndex = index;
-                    setState(() {});
-                  },
-                  child: JobsBox(
-                    width: currentToDoIndex == index ? 110 : 100,
-                    height: currentToDoIndex == index ? 110 : 100,
-                    color: currentToDoIndex == index
-                        ? Colors.greenAccent
-                        : Colors.white24,
-                    iconData: currentToDoIndex == index
-                        ? todoBoxSelected.elementAt(index)
-                        : todoBoxUnselected.elementAt(index),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Align(
-              alignment: Alignment.topCenter,
+              EdgeInsets.only(top: 70 + MediaQuery.of(context).padding.top),
               child: Container(
                 width: double.infinity,
                 height: 365,
@@ -171,6 +155,39 @@ class _TodayScreenState extends State<TodayScreen>
                     DietInbox(currentToDoIndex: currentToDoIndex),
                     WaterInbox(currentToDoIndex: currentToDoIndex),
                   ],
+                ),
+              ),
+            ),
+          ),
+const SizedBox(height: 20,),
+          SizedBox(
+            height: 275,
+            child: GridView.builder(
+              padding: EdgeInsets.zero,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+              ),
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 6,
+              itemBuilder: (context, index) => Center(
+                child: GestureDetector(
+                  onTap: () {
+                    if (currentToDoIndex != 1 && index == 1) {
+                      segmentedIndex = 0;
+                    }
+                    currentToDoIndex = index;
+                    setState(() {});
+                  },
+                  child: JobsBox(
+                    width: currentToDoIndex == index ? 110 : 100,
+                    height: currentToDoIndex == index ? 110 : 100,
+                    color: currentToDoIndex == index
+                        ? Colors.greenAccent
+                        : Colors.white24,
+                    iconData: currentToDoIndex == index
+                        ? todoBoxSelected.elementAt(index)
+                        : todoBoxUnselected.elementAt(index),
+                  ),
                 ),
               ),
             ),
