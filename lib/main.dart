@@ -36,4 +36,4 @@ class _MyAppState extends State<MyApp> {
       home: const ProductivityScreens(),
     );
   }
-} /// I'm SemihYlmzz and we're on GitHub anymore. :)
+}

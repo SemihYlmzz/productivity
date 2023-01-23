@@ -28,6 +28,7 @@ dependencies:
   multiple_stream_builder: ^3.0.2
   flutter_countdown_timer: ^4.1.0
   animated_path: ^0.0.2
+  go_router: ^6.0.0
 
 dev_dependencies:
   flutter_test:
