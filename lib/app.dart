@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:productivity/features/navigation/view/screens/app_navigator.dart';
-import 'package:productivity/providers/today_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart' as oldProvider; // TODO: Kaldır
+
+import 'features/features.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -15,8 +12,10 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => TodayProvider())],
+    return oldProvider.MultiProvider(
+      providers: [
+        oldProvider.ChangeNotifierProvider(create: (_) => TodayProvider())
+      ],
       child: CupertinoApp(
         debugShowCheckedModeBanner: false,
         theme: CupertinoThemeData(
@@ -36,7 +35,20 @@ class _AppState extends State<App> {
           ),
         ),
         title: 'Productivity',
-        home: const AppNavigator(),
+        home: AppNavigator(
+          leftScreen: Container(
+            color: Colors.white10,
+          ),
+          rightScreen: Container(
+            color: Colors.white10,
+          ),
+          bottomScreen: Container(
+            color: Colors.white10,
+          ),
+          middleScreen: Container(
+            color: Colors.white10,
+          ),
+        ),
       ),
     );
   }
