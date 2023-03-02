@@ -45,9 +45,7 @@ class _AppState extends State<App> {
           bottomScreen: Container(
             color: Colors.white10,
           ),
-          middleScreen: Container(
-            color: Colors.white10,
-          ),
+          middleScreen: const TodayJobs(),
         ),
       ),
     );

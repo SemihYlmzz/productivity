@@ -179,7 +179,7 @@ class _TodayScreenState extends State<TodayScreen>
                     currentToDoIndex = index;
                     setState(() {});
                   },
-                  child: JobsBox(
+                  child: JobsBoxx(
                     width: currentToDoIndex == index ? 110 : 100,
                     height: currentToDoIndex == index ? 110 : 100,
                     color: currentToDoIndex == index

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class JobsBox extends StatelessWidget {
-  const JobsBox({
+class JobsBoxx extends StatelessWidget {
+  const JobsBoxx({
     required this.width,
     required this.height,
     required this.color,
