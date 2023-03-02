@@ -89,18 +89,18 @@ class _TrainingEndState extends State<TrainingEnd> {
                                   Text(abc.toString()),
                                 ],
                               ),
-                              Column(
+                              const Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
-                                children: const [
+                                children: [
                                   Text('Rest'),
                                   Text('16m 23s'),
                                 ],
                               ),
-                              Column(
+                              const Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
-                                children: const [
+                                children: [
                                   Text('Dif'),
                                   Text('0 Kg'),
                                 ],
