@@ -7,3 +7,6 @@ final currentPageProvider = StateProvider<NavigatablePages>((ref) {
 final showIndicatorProvider = StateProvider<bool>((ref) {
   return false;
 });
+final canSwipeHorizontalyProvider = StateProvider<bool>((ref) {
+  return true;
+});

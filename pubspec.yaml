@@ -31,16 +31,16 @@ dependencies:
   lottie: ^2.2.0
   multiple_stream_builder: ^3.0.2
   provider: ^6.0.5
-  riverpod_lint: ^1.1.2
   uuid: ^3.0.7
   very_good_analysis: ^4.0.0+1
 
 dev_dependencies:
   flutter_launcher_icons: ^0.10.0
-
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  riverpod_lint: ^1.1.2
+  custom_lint: ^0.2.12
 
 flutter_icons:
   ios: true
