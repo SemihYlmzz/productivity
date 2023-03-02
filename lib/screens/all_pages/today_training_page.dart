@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../widgets/page_widgets/training_page_widgets/training_exports.dart';
 
 typedef ListCallback = void Function(Map<String, dynamic>);
-typedef BoolCallback = void Function(bool);
 
 class TodayTrainingPage extends StatefulWidget {
   const TodayTrainingPage({

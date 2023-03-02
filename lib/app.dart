@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:productivity/features/navigation/view/screens/app_navigator.dart';
 import 'package:productivity/providers/today_provider.dart';
-import 'package:productivity/screens/productivity_screens.dart';
 import 'package:provider/provider.dart';
 
 class App extends StatefulWidget {
@@ -36,7 +36,7 @@ class _AppState extends State<App> {
           ),
         ),
         title: 'Productivity',
-        home: const ProductivityScreens(),
+        home: const AppNavigator(),
       ),
     );
   }

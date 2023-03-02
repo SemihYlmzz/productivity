@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:productivity/features/features.dart';
 
 import 'app.dart';
 
 void main() async {
   runApp(
-    const App(),
+    const ProviderScope(child: App()),
   );
 }
