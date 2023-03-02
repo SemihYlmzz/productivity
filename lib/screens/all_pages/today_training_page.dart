@@ -7,19 +7,18 @@ typedef ListCallback = void Function(Map<String, dynamic>);
 typedef BoolCallback = void Function(bool);
 
 class TodayTrainingPage extends StatefulWidget {
+  const TodayTrainingPage({
+    required this.exercise,
+    required this.dayOfTheWeek,
+    required this.finishedExerciseTTP,
+    required this.isDoneInfo,
+    super.key,
+  });
   final BoolCallback isDoneInfo;
 
   final ListCallback? finishedExerciseTTP;
   final String dayOfTheWeek;
   final Map<String, dynamic> exercise;
-
-  const TodayTrainingPage({
-    Key? key,
-    required this.exercise,
-    required this.dayOfTheWeek,
-    required this.finishedExerciseTTP,
-    required this.isDoneInfo,
-  }) : super(key: key);
 
   @override
   State<TodayTrainingPage> createState() => _TodayTrainingPageState();
@@ -51,9 +50,9 @@ class _TodayTrainingPageState extends State<TodayTrainingPage> {
               setState(() {});
             },
             visibleIndex: stageIndex,
-            movement: widget.exercise['exercise'],
-            needs: widget.exercise['needs'],
-            repGoal: widget.exercise['rep'],
+            movement: widget.exercise['exercise'] as String,
+            needs: widget.exercise['needs'] as String,
+            repGoal: widget.exercise['rep'] as int,
             setGoal: 5,
           ),
           TrainingStart(
@@ -79,8 +78,8 @@ class _TodayTrainingPageState extends State<TodayTrainingPage> {
               );
             },
             setIndex: reps.length + 1,
-            repGoal: widget.exercise['rep'],
-            movement: widget.exercise['exercise'],
+            repGoal: widget.exercise['rep'] as int,
+            movement: widget.exercise['exercise'] as String,
           ),
           TrainingRest(
             visibleIndex: stageIndex,
@@ -100,9 +99,9 @@ class _TodayTrainingPageState extends State<TodayTrainingPage> {
           ),
           TrainingEnd(
             visibleIndex: stageIndex,
-            movement: widget.exercise['exercise'],
+            movement: widget.exercise['exercise'] as String,
             repsList: reps,
-            repGoal: widget.exercise['rep'],
+            repGoal: widget.exercise['rep'] as int,
             finishedExercise: (v) {
               widget.finishedExerciseTTP!(v);
             },

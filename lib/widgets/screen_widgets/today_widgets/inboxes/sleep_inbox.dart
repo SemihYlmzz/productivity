@@ -1,20 +1,18 @@
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/utils.dart';
 
 class SleepInbox extends StatelessWidget {
+  const SleepInbox({
+    required this.currentToDoIndex,
+    required this.sleptAt,
+    required this.wakeUpAt,
+    super.key,
+  });
   final int currentToDoIndex;
   final String sleptAt;
   final String wakeUpAt;
-
-  const SleepInbox(
-      {Key? key,
-      required this.currentToDoIndex,
-      required this.sleptAt,
-      required this.wakeUpAt})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +23,7 @@ class SleepInbox extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Column(
-              children:  [
+              children: [
                 const Text('You Slept at'),
                 GradientText(
                   gradient: const LinearGradient(

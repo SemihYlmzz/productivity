@@ -1,23 +1,12 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/material.dart';
-
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 typedef IntCallback = void Function(int val);
 typedef StringCallback = void Function(String val);
 
 class TrainingStart extends StatefulWidget {
-  final IntCallback stageIndexBack;
-  final IntCallback stageIndexNext;
-  final IntCallback setRep;
-  final StringCallback setDif;
-  final int visibleIndex;
-  final int setIndex;
-  final int repGoal;
-  final String movement;
-
   const TrainingStart({
-    Key? key,
     required this.stageIndexBack,
     required this.visibleIndex,
     required this.setDif,
@@ -26,7 +15,16 @@ class TrainingStart extends StatefulWidget {
     required this.setIndex,
     required this.repGoal,
     required this.movement,
-  }) : super(key: key);
+    super.key,
+  });
+  final IntCallback stageIndexBack;
+  final IntCallback stageIndexNext;
+  final IntCallback setRep;
+  final StringCallback setDif;
+  final int visibleIndex;
+  final int setIndex;
+  final int repGoal;
+  final String movement;
 
   @override
   State<TrainingStart> createState() => _TrainingStartState();
@@ -47,11 +45,12 @@ class _TrainingStartState extends State<TrainingStart> {
         children: [
           const SizedBox(),
           FadeIn(
-              delay: const Duration(milliseconds: 400),
-              child: Text(
-                'Set - ${widget.setIndex}',
-                style: const TextStyle(fontSize: 70),
-              )),
+            delay: const Duration(milliseconds: 400),
+            child: Text(
+              'Set - ${widget.setIndex}',
+              style: const TextStyle(fontSize: 70),
+            ),
+          ),
           Column(
             children: [
               Row(
@@ -59,25 +58,27 @@ class _TrainingStartState extends State<TrainingStart> {
                 children: [
                   Expanded(
                     child: FadeInLeft(
-                        delay: const Duration(milliseconds: 700),
-                        child: Center(
-                          child: Text(
-                            widget.movement != '  Plank'
-                                ? 'REP GOAL :'
-                                : 'SEC GOAL :',
-                            textAlign: TextAlign.start,
-                          ),
-                        )),
+                      delay: const Duration(milliseconds: 700),
+                      child: Center(
+                        child: Text(
+                          widget.movement != '  Plank'
+                              ? 'REP GOAL :'
+                              : 'SEC GOAL :',
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ),
                   ),
                   Expanded(
                     child: FadeInRight(
-                        delay: const Duration(milliseconds: 900),
-                        child: Center(
-                          child: Text(
-                            widget.repGoal.toString(),
-                            textAlign: TextAlign.start,
-                          ),
-                        )),
+                      delay: const Duration(milliseconds: 900),
+                      child: Center(
+                        child: Text(
+                          widget.repGoal.toString(),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -86,13 +87,14 @@ class _TrainingStartState extends State<TrainingStart> {
                 children: [
                   Expanded(
                     child: FadeInLeft(
-                        delay: const Duration(milliseconds: 1100),
-                        child: const Center(
-                          child: Text(
-                            'You did ? :',
-                            textAlign: TextAlign.start,
-                          ),
-                        )),
+                      delay: const Duration(milliseconds: 1100),
+                      child: const Center(
+                        child: Text(
+                          'You did ? :',
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                    ),
                   ),
                   Expanded(
                     child: FadeInRight(
@@ -112,8 +114,8 @@ class _TrainingStartState extends State<TrainingStart> {
                               setState(() {});
                             },
                             scrollController: FixedExtentScrollController(
-                                initialItem:
-                                    set1Rep != null ? (set1Rep! + 1) : 0),
+                              initialItem: set1Rep != null ? (set1Rep! + 1) : 0,
+                            ),
                             children: List<Widget>.generate(
                               widget.repGoal + 2,
                               (int index) {
@@ -146,35 +148,40 @@ class _TrainingStartState extends State<TrainingStart> {
               Row(
                 children: [
                   difficultyBoxes(
-                      (difficultyLevel == 'Too Easy' || difficultyLevel == '')
-                          ? Colors.amber
-                          : Colors.blueGrey,
-                      'Too Easy',
-                      2000),
+                    (difficultyLevel == 'Too Easy' || difficultyLevel == '')
+                        ? Colors.amber
+                        : Colors.blueGrey,
+                    'Too Easy',
+                    2000,
+                  ),
                   difficultyBoxes(
-                      (difficultyLevel == 'Easy' || difficultyLevel == '')
-                          ? Colors.yellow
-                          : Colors.blueGrey,
-                      'Easy',
-                      2250),
+                    (difficultyLevel == 'Easy' || difficultyLevel == '')
+                        ? Colors.yellow
+                        : Colors.blueGrey,
+                    'Easy',
+                    2250,
+                  ),
                   difficultyBoxes(
-                      (difficultyLevel == 'Normal' || difficultyLevel == '')
-                          ? Colors.greenAccent
-                          : Colors.blueGrey,
-                      'Normal',
-                      2500),
+                    (difficultyLevel == 'Normal' || difficultyLevel == '')
+                        ? Colors.greenAccent
+                        : Colors.blueGrey,
+                    'Normal',
+                    2500,
+                  ),
                   difficultyBoxes(
-                      (difficultyLevel == 'Hard' || difficultyLevel == '')
-                          ? Colors.deepOrangeAccent
-                          : Colors.blueGrey,
-                      'Hard',
-                      2750),
+                    (difficultyLevel == 'Hard' || difficultyLevel == '')
+                        ? Colors.deepOrangeAccent
+                        : Colors.blueGrey,
+                    'Hard',
+                    2750,
+                  ),
                   difficultyBoxes(
-                      (difficultyLevel == 'Too Hard' || difficultyLevel == '')
-                          ? Colors.red
-                          : Colors.blueGrey,
-                      'Too Hard',
-                      3000),
+                    (difficultyLevel == 'Too Hard' || difficultyLevel == '')
+                        ? Colors.red
+                        : Colors.blueGrey,
+                    'Too Hard',
+                    3000,
+                  ),
                 ],
               ),
             ],
@@ -236,18 +243,21 @@ class _TrainingStartState extends State<TrainingStart> {
           setState(() {});
         },
         child: Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(4),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 350),
             width: 65,
             height: 65,
             decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.circular(6),
-                boxShadow: [
-                  BoxShadow(
-                      color: color, offset: const Offset(0, 0), blurRadius: 9)
-                ]),
+              color: color,
+              borderRadius: BorderRadius.circular(6),
+              boxShadow: [
+                BoxShadow(
+                  color: color,
+                  blurRadius: 9,
+                )
+              ],
+            ),
             child: Center(
               child: Text(
                 difficulty,
@@ -255,9 +265,8 @@ class _TrainingStartState extends State<TrainingStart> {
                   fontSize: 22,
                   shadows: [
                     Shadow(
-                        color: Colors.black,
-                        offset: Offset(0, 0),
-                        blurRadius: 15)
+                      blurRadius: 15,
+                    )
                   ],
                 ),
               ),

@@ -2,6 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DataTableWidget extends StatelessWidget {
+  const DataTableWidget({
+    required this.exercise1,
+    required this.exercise1Reps,
+    required this.exercise2,
+    required this.exercise2Reps,
+    required this.exercise1Done,
+    required this.exercise2Done,
+    required this.exercise1Set,
+    required this.exercise2Set,
+    required this.exercise1Dif,
+    super.key,
+    this.exercise2Dif = '',
+  });
   final String exercise1;
   final String exercise1Reps;
   final String exercise1Set;
@@ -13,20 +26,6 @@ class DataTableWidget extends StatelessWidget {
   final String? exercise2Set;
   final String? exercise2Dif;
   final bool exercise2Done;
-
-  const DataTableWidget(
-      {Key? key,
-      required this.exercise1,
-      required this.exercise1Reps,
-      required this.exercise2,
-      required this.exercise2Reps,
-      required this.exercise1Done,
-      required this.exercise2Done,
-      required this.exercise1Set,
-      required this.exercise2Set,
-      required this.exercise1Dif,
-      this.exercise2Dif = ''})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +59,6 @@ class DataTableWidget extends StatelessWidget {
       fontSize: 24,
       shadows: [
         const Shadow(
-          color: Colors.black,
-          offset: Offset(0, 0),
           blurRadius: 20,
         ),
       ],
@@ -103,9 +100,7 @@ class DataTableWidget extends StatelessWidget {
     return GoogleFonts.dosis(
       fontSize: 18,
       color: exercise1Done ? Colors.greenAccent : Colors.white,
-      shadows: const [
-        Shadow(color: Colors.black, offset: Offset(0, 0), blurRadius: 20)
-      ],
+      shadows: const [Shadow(blurRadius: 20)],
     );
   }
 

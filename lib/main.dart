@@ -29,11 +29,16 @@ class _MyAppState extends State<MyApp> {
           brightness: Brightness.dark,
           scaffoldBackgroundColor: Colors.black87,
           textTheme: CupertinoTextThemeData(
-            textStyle:
-                GoogleFonts.dongle(color: Colors.white, fontSize: 35, shadows: [
-              const Shadow(
-                  color: Colors.white, offset: Offset(0, 0), blurRadius: 15),
-            ]),
+            textStyle: GoogleFonts.dongle(
+              color: Colors.white,
+              fontSize: 35,
+              shadows: [
+                const Shadow(
+                  color: Colors.white,
+                  blurRadius: 15,
+                ),
+              ],
+            ),
           ),
         ),
         title: 'Productivity',

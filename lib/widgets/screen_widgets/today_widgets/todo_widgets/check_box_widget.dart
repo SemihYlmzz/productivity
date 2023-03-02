@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CheckBoxWidget extends StatelessWidget {
+  const CheckBoxWidget({required this.isDone, required this.text, super.key});
   final bool isDone;
   final String text;
-
-  const CheckBoxWidget({Key? key, required this.isDone, required this.text})
-      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,7 @@ class CheckBoxWidget extends StatelessWidget {
             width: 30,
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 5.0),
+            padding: const EdgeInsets.only(bottom: 5),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 250),
               width: 30,

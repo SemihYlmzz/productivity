@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 class HistoryScreen extends StatefulWidget {
-  const HistoryScreen({Key? key}) : super(key: key);
+  const HistoryScreen({super.key});
 
   @override
   State<HistoryScreen> createState() => _HistoryScreenState();
@@ -36,7 +37,9 @@ class _HistoryScreenState extends State<HistoryScreen>
         child: GridView.builder(
           padding: const EdgeInsets.symmetric(vertical: 10),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 7, mainAxisSpacing: 15, crossAxisSpacing: 0),
+            crossAxisCount: 7,
+            mainAxisSpacing: 15,
+          ),
           itemCount: 8,
           controller: scrollController,
           itemBuilder: (context, index) => historyBox(index, rng.nextInt(4)),
@@ -79,7 +82,6 @@ class _HistoryScreenState extends State<HistoryScreen>
                   : (isDone == 1 || isDone == 2)
                       ? Colors.greenAccent
                       : Colors.yellow,
-              offset: const Offset(0, 0),
               blurRadius: 10,
               spreadRadius: 1,
             ),

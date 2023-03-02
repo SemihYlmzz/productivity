@@ -2,8 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 class WaterInbox extends StatelessWidget {
+  const WaterInbox({required this.currentToDoIndex, super.key});
   final int currentToDoIndex;
-  const WaterInbox({Key? key, required this.currentToDoIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

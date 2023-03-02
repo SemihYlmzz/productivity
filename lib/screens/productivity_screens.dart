@@ -6,14 +6,14 @@ import '../screens/day_screens.dart';
 import '../widgets/global_widgets/indicator_widget.dart';
 
 class ProductivityScreens extends StatefulWidget {
-  const ProductivityScreens({Key? key}) : super(key: key);
+  const ProductivityScreens({super.key});
 
   @override
   State<ProductivityScreens> createState() => _ProductivityScreensState();
 }
 
 class _ProductivityScreensState extends State<ProductivityScreens> {
-  PageController pageController = PageController(initialPage: 0);
+  PageController pageController = PageController();
   int selectedIndex = 0;
   bool isIndicatorVisible = true;
 
@@ -30,10 +30,12 @@ class _ProductivityScreensState extends State<ProductivityScreens> {
           controller: pageController,
           scrollDirection: Axis.vertical,
           children: [
-            DayScreens(indexValue: (v) {
-              v == 1 ? isIndicatorVisible = true : isIndicatorVisible = false;
-              setState(() {});
-            }),
+            DayScreens(
+              indexValue: (v) {
+                v == 1 ? isIndicatorVisible = true : isIndicatorVisible = false;
+                setState(() {});
+              },
+            ),
             const ResultsScreen(),
           ],
         ),
@@ -43,14 +45,15 @@ class _ProductivityScreensState extends State<ProductivityScreens> {
           ),
           opacity: isIndicatorVisible ? 1 : 0,
           child: Align(
-              alignment: Alignment.centerLeft,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  indicator(selectedIndex == 0),
-                  indicator(selectedIndex == 1),
-                ],
-              )),
+            alignment: Alignment.centerLeft,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                indicator(selectedIndex == 0),
+                indicator(selectedIndex == 1),
+              ],
+            ),
+          ),
         ),
       ],
     );

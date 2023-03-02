@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
 class TodayProvider with ChangeNotifier {
+  TodayProvider({this.todayPoint = 0});
   int todayPoint;
 
-  TodayProvider({this.todayPoint = 0});
-
-  changeTodayPoint(int newTodayPoint){
+  changeTodayPoint(int newTodayPoint) {
     todayPoint = newTodayPoint;
     notifyListeners();
   }

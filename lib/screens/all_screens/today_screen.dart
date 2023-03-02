@@ -1,3 +1,4 @@
+import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:productivity/providers/today_provider.dart';
@@ -5,10 +6,9 @@ import 'package:provider/provider.dart';
 
 import '../../widgets/screen_widgets/today_widgets/inboxes/inboxes_exports.dart';
 import '../../widgets/screen_widgets/today_widgets/jobs_box_widget.dart';
-import 'package:animated_flip_counter/animated_flip_counter.dart';
 
 class TodayScreen extends StatefulWidget {
-  const TodayScreen({Key? key}) : super(key: key);
+  const TodayScreen({super.key});
 
   @override
   State<TodayScreen> createState() => _TodayScreenState();
@@ -24,7 +24,7 @@ class _TodayScreenState extends State<TodayScreen>
 
   List<Map<String, dynamic>> houseMap = [
     {'mission': 'Make Your Bed.', 'isDone': false},
-    {'mission': "Place everything, Where they must be", 'isDone': false},
+    {'mission': 'Place everything, Where they must be', 'isDone': false},
     {'mission': 'Clean your Room', 'isDone': false},
     {'mission': 'Place the Dishes.', 'isDone': false},
   ];
@@ -90,11 +90,10 @@ class _TodayScreenState extends State<TodayScreen>
         ),
         trailing: AnimatedFlipCounter(
           value: todayProvider.todayPoint,
-          textStyle:  const TextStyle(fontSize: 41),
+          textStyle: const TextStyle(fontSize: 41),
           curve: Curves.decelerate,
           duration: const Duration(milliseconds: 500),
           wholeDigits: 3,
-
         ),
         backgroundColor: Colors.white.withOpacity(0.035),
         brightness: Brightness.dark,
@@ -102,10 +101,9 @@ class _TodayScreenState extends State<TodayScreen>
       child: Column(
         children: [
           Expanded(
-
             child: Padding(
               padding:
-              EdgeInsets.only(top: 70 + MediaQuery.of(context).padding.top),
+                  EdgeInsets.only(top: 70 + MediaQuery.of(context).padding.top),
               child: Container(
                 width: double.infinity,
                 height: 365,
@@ -117,9 +115,10 @@ class _TodayScreenState extends State<TodayScreen>
                   alignment: Alignment.center,
                   children: [
                     SleepInbox(
-                        currentToDoIndex: currentToDoIndex,
-                        sleptAt: sleptAt,
-                        wakeUpAt: wakeUpAt),
+                      currentToDoIndex: currentToDoIndex,
+                      sleptAt: sleptAt,
+                      wakeUpAt: wakeUpAt,
+                    ),
                     ToDoInbox(
                       currentToDoIndex: currentToDoIndex,
                       houseMap: houseMap,
@@ -159,7 +158,9 @@ class _TodayScreenState extends State<TodayScreen>
               ),
             ),
           ),
-const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           SizedBox(
             height: 275,
             child: GridView.builder(

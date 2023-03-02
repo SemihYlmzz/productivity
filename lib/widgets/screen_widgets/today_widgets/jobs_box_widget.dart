@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
 class JobsBox extends StatelessWidget {
-  final double width;
-  final double height;
-  final Color color;
-  final IconData iconData;
-
   const JobsBox({
-    Key? key,
     required this.width,
     required this.height,
     required this.color,
     required this.iconData,
-  }) : super(key: key);
+    super.key,
+  });
+  final double width;
+  final double height;
+  final Color color;
+  final IconData iconData;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,6 @@ class JobsBox extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: color != Colors.white24 ? color : Colors.transparent,
-            offset: const Offset(0, 0),
             blurRadius: 15,
           ),
         ],

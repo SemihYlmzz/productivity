@@ -24,28 +24,37 @@ class HeroDialogRoute extends PageRoute {
   String? get barrierLabel => 'barrierLabel';
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation, Widget child) {
+  Widget buildTransitions(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
     return FadeTransition(
-        opacity: CurvedAnimation(parent: animation, curve: Curves.easeOut),
-        child: child);
+      opacity: CurvedAnimation(parent: animation, curve: Curves.easeOut),
+      child: child,
+    );
   }
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation) {
+  Widget buildPage(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+  ) {
     return builder(context);
   }
 }
 
 class GradientText extends StatelessWidget {
-  const GradientText(this.text,
-      {Key? key,
-      required this.gradient,
-      this.style,
-      this.align,
-      this.maxLines = 1})
-      : super(key: key);
+  const GradientText(
+    this.text, {
+    required this.gradient,
+    super.key,
+    this.style,
+    this.align,
+    this.maxLines = 1,
+  });
 
   final int maxLines;
   final String text;
@@ -60,11 +69,13 @@ class GradientText extends StatelessWidget {
       shaderCallback: (bounds) => gradient.createShader(
         Rect.fromLTWH(0, 0, bounds.width, bounds.height),
       ),
-      child: Text(text,
-          style: style,
-          textAlign: align,
-          maxLines: maxLines,
-          overflow: TextOverflow.ellipsis),
+      child: Text(
+        text,
+        style: style,
+        textAlign: align,
+        maxLines: maxLines,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 }
@@ -73,11 +84,12 @@ Route createRoute(Widget routeScreen) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => routeScreen,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(0.0, 1.0);
+      const begin = Offset(0, 1);
       const end = Offset.zero;
       const curve = Curves.ease;
 
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      final tween =
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
       return SlideTransition(
         position: animation.drive(tween),
