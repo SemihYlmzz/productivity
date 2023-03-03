@@ -1,4 +1,4 @@
-import 'package:productivity/features/today_jobs/view/widgets/jobs_box.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../features.dart';
 
@@ -9,8 +9,9 @@ class TodayJobs extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pageController = usePageController();
 
-    final jobsList = ref.watch(jobsListProvider);
-    final currentJob = ref.watch(currentJobProvider);
+    //  final ownedJobsViewModel = ref.watch(ownedJobsProvider);
+    //  final currentJobViewModel = ref.watch(selectedJobProvider);
+
     return Container(
       padding: const EdgeInsets.all(8),
       child: SafeArea(
@@ -37,41 +38,55 @@ class TodayJobs extends HookConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Container(
+            SizedBox(
               height: 275,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.white),
-              ),
-              child: GridView.builder(
-                padding: const EdgeInsets.only(top: 16),
-                itemCount: jobsList.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                ),
-                itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    if (jobsList[index].job == currentJob) {
-                      ref
-                          .read(currentJobProvider.notifier)
-                          .update((state) => Jobs.empty);
-                    } else {
-                      ref
-                          .read(currentJobProvider.notifier)
-                          .update((state) => jobsList[index].job);
-                      pageController.animateToPage(
-                        index,
-                        duration: const Duration(milliseconds: 370),
-                        curve: Curves.decelerate,
-                      );
-                    }
-                  },
-                  child: JobsBox(
-                    selectedIconData: jobsList[index].selectedIconData,
-                    unSelectedIconData: jobsList[index].unSelectedIconData,
-                    myJob: jobsList[index].job,
-                  ),
+              child:
+
+                  /// ownedJobsViewModel.isEmpty
+                  ///    ?
+                  GestureDetector(
+                onTap: () {
+                  FirebaseFirestore.instance
+                      .collection('users')
+                      .doc('myID')
+                      .update({
+                    'ownedJobs': [Jobs.empty.toString()]
+                  });
+                },
+                child: const Center(
+                  child: Text('Tap to add job.'),
                 ),
               ),
+              // : GridView.builder(
+              //     padding: const EdgeInsets.only(top: 16),
+              //     itemCount: ownedJobsViewModel.length,
+              //     gridDelegate:
+              //         const SliverGridDelegateWithFixedCrossAxisCount(
+              //       crossAxisCount: 3,
+              //     ),
+              //     itemBuilder: (context, index) => GestureDetector(
+              //       onTap: () {
+              //         if (ownedJobsViewModel[index].job ==
+              //             currentJobViewModel) {
+              //           ref
+              //               .read(selectedJobProvider.notifier)
+              //               .update((state) => Jobs.empty);
+              //         } else {
+              //           ref.read(selectedJobProvider.notifier).update(
+              //                 (state) => ownedJobsViewModel[index].job,
+              //               );
+              //           pageController.animateToPage(
+              //             index,
+              //             duration: const Duration(milliseconds: 370),
+              //             curve: Curves.decelerate,
+              //           );
+              //         }
+              //       },
+              //       child: JobsBox(
+              //         myJob: ownedJobsViewModel[index],
+              //       ),
+              //     ),
+              //   ),
             ),
           ],
         ),

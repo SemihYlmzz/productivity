@@ -2,38 +2,36 @@ import '../../../features.dart';
 
 class JobsBox extends ConsumerWidget {
   const JobsBox({
-    required this.selectedIconData,
-    required this.unSelectedIconData,
     required this.myJob,
     super.key,
   });
 
-  final IconData selectedIconData;
-  final IconData unSelectedIconData;
-  final Jobs myJob;
+  final Job myJob;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentJob = ref.watch(currentJobProvider);
+    final currentJob = ref.watch(selectedJobProvider);
+    final isMyJobSelected = currentJob == myJob.job;
 
     return Center(
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
-        width: currentJob == myJob ? 110 : 100,
-        height: currentJob == myJob ? 110 : 100,
+        width: isMyJobSelected ? 110 : 100,
+        height: isMyJobSelected ? 110 : 100,
         decoration: BoxDecoration(
-          color: currentJob == myJob ? Colors.greenAccent : Colors.white24,
+          color: isMyJobSelected ? Colors.greenAccent : Colors.white24,
           boxShadow: [
             BoxShadow(
-              color:
-                  currentJob == myJob ? Colors.greenAccent : Colors.transparent,
+              color: currentJob == myJob.job
+                  ? Colors.greenAccent
+                  : Colors.transparent,
               blurRadius: 15,
             ),
           ],
-          borderRadius: BorderRadius.circular(currentJob == myJob ? 12 : 8),
+          borderRadius: BorderRadius.circular(isMyJobSelected ? 12 : 8),
         ),
         child: Icon(
-          currentJob == myJob ? selectedIconData : unSelectedIconData,
+          isMyJobSelected ? myJob.selectedIconData : myJob.unSelectedIconData,
           size: 60,
           color: Colors.white,
           shadows: const [

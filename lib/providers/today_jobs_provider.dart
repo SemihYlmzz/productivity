@@ -3,38 +3,38 @@ import '../features/features.dart';
 final jobsListProvider = StateProvider<List<Job>>((ref) {
   return [
     Job(
-      Jobs.sleep,
-      CupertinoIcons.sunrise_fill,
-      CupertinoIcons.sunrise,
+      job: Jobs.sleep,
+      selectedIconData: CupertinoIcons.sunrise_fill,
+      unSelectedIconData: CupertinoIcons.sunrise,
     ),
     Job(
-      Jobs.toDo,
-      CupertinoIcons.check_mark_circled_solid,
-      CupertinoIcons.check_mark_circled,
+      job: Jobs.toDo,
+      selectedIconData: CupertinoIcons.check_mark_circled_solid,
+      unSelectedIconData: CupertinoIcons.check_mark_circled,
     ),
     Job(
-      Jobs.sport,
-      CupertinoIcons.bolt_circle_fill,
-      CupertinoIcons.bolt_circle,
+      job: Jobs.sport,
+      selectedIconData: CupertinoIcons.bolt_circle_fill,
+      unSelectedIconData: CupertinoIcons.bolt_circle,
     ),
     Job(
-      Jobs.book,
-      CupertinoIcons.book_circle_fill,
-      CupertinoIcons.book_circle,
+      job: Jobs.book,
+      selectedIconData: CupertinoIcons.book_circle_fill,
+      unSelectedIconData: CupertinoIcons.book_circle,
     ),
     Job(
-      Jobs.unknown,
-      CupertinoIcons.square_stack_3d_down_right_fill,
-      CupertinoIcons.square_stack_3d_down_right,
+      job: Jobs.unknown,
+      selectedIconData: CupertinoIcons.square_stack_3d_down_right_fill,
+      unSelectedIconData: CupertinoIcons.square_stack_3d_down_right,
     ),
     Job(
-      Jobs.inTake,
-      CupertinoIcons.flame_fill,
-      CupertinoIcons.flame,
+      job: Jobs.inTake,
+      selectedIconData: CupertinoIcons.flame_fill,
+      unSelectedIconData: CupertinoIcons.flame,
     ),
   ];
 });
 
-final currentJobProvider = StateProvider<Jobs>((ref) {
+final selectedJobProvider = StateProvider<Jobs>((ref) {
   return Jobs.empty;
 });
