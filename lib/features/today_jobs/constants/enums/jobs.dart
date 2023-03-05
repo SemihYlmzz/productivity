@@ -1,5 +1,4 @@
 enum Jobs {
-  empty,
   sleep,
   toDo,
   sport,

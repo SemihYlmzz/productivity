@@ -35,6 +35,6 @@ final jobsListProvider = StateProvider<List<Job>>((ref) {
   ];
 });
 
-final selectedJobProvider = StateProvider<Jobs>((ref) {
-  return Jobs.empty;
+final selectedJobProvider = StateProvider<Jobs?>((ref) {
+  return null;
 });

@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../../features.dart';
 
 class TodayJobs extends HookConsumerWidget {
@@ -46,12 +44,16 @@ class TodayJobs extends HookConsumerWidget {
                   ///    ?
                   GestureDetector(
                 onTap: () {
-                  FirebaseFirestore.instance
-                      .collection('users')
-                      .doc('myID')
-                      .update({
-                    'ownedJobs': [Jobs.empty.toString()]
-                  });
+                  editOwnedJobs(context);
+
+                  /// Todo   FirebaseFirestore.instance7
+                  /// Todo       .collection('users')
+                  /// Todo       .doc('myID')
+                  /// Todo       .update({
+                  /// Todo     'ownedJobs': [
+                  /// Todo       Jobs.book.toString(),
+                  /// Todo     ],
+                  /// Todo   });
                 },
                 child: const Center(
                   child: Text('Tap to add job.'),
@@ -89,6 +91,69 @@ class TodayJobs extends HookConsumerWidget {
               //   ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Future<dynamic> editOwnedJobs(BuildContext context) {
+    return showCupertinoDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (context) => Center(
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.8,
+          width: 340,
+          decoration: BoxDecoration(
+            color: Colors.grey.shade800,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            children: [
+              const Text('Select Jobs'),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 6,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          const Text('Healty sleep'),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                width: 100,
+                                height: 100,
+                                color: Colors.white,
+                              ),
+                              const Column(
+                                children: [
+                                  Text(
+                                    '++ Concantration',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  Text(
+                                    '++ Productivity',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  Text(
+                                    '+ Reduce Stress',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
