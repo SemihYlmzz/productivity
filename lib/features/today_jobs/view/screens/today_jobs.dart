@@ -46,14 +46,14 @@ class TodayJobs extends HookConsumerWidget {
                 onTap: () {
                   editOwnedJobs(context);
 
-                  /// Todo   FirebaseFirestore.instance7
-                  /// Todo       .collection('users')
-                  /// Todo       .doc('myID')
-                  /// Todo       .update({
-                  /// Todo     'ownedJobs': [
-                  /// Todo       Jobs.book.toString(),
-                  /// Todo     ],
-                  /// Todo   });
+                  //  FirebaseFirestore.instance7
+                  //      .collection('users')
+                  //      .doc('myID')
+                  //      .update({
+                  //    'ownedJobs': [
+                  //      Jobs.book.toString(),
+                  //    ],
+                  //  });
                 },
                 child: const Center(
                   child: Text('Tap to add job.'),
